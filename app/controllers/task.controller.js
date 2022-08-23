@@ -13,7 +13,7 @@ exports.create = (req, res) => {
     const task = new Task({
         title: req.body.title,
         description: req.body.description,
-        published: req.body.published || false
+        completed: req.body.completed || false
     });
 
     // Save Task in the database
@@ -58,9 +58,9 @@ exports.findOne = (req, res) => {
     });
 };
 
-// find all published Tasks
-exports.findAllPublished = (req, res) => {
-    Task.getAllPublished((err, data) => {
+// find all completed Tasks
+exports.findAllCompleted = (req, res) => {
+    Task.getAllCompleted((err, data) => {
         if (err)
             res.status(500).send({
                 message:

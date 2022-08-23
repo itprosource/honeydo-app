@@ -4,7 +4,7 @@ const sql = require("./db.js");
 const Task = function(task) {
     this.title = task.title;
     this.description = task.description;
-    this.published = task.published;
+    this.completed = task.completed;
 };
 
 Task.create = (newTask, result) => {
@@ -58,8 +58,8 @@ Task.getAll = (title, result) => {
     });
 };
 
-Task.getAllPublished = result => {
-    sql.query("SELECT * FROM tasks WHERE published=true", (err, res) => {
+Task.getAllCompleted = result => {
+    sql.query("SELECT * FROM tasks WHERE completed=true", (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
@@ -73,8 +73,8 @@ Task.getAllPublished = result => {
 
 Task.updateById = (id, task, result) => {
     sql.query(
-        "UPDATE tasks SET title = ?, description = ?, published = ? WHERE id = ?",
-        [task.title, task.description, task.published, id],
+        "UPDATE tasks SET title = ?, description = ?, completed = ? WHERE id = ?",
+        [task.title, task.description, task.completed, id],
         (err, res) => {
             if (err) {
                 console.log("error: ", err);
