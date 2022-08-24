@@ -13,7 +13,8 @@ exports.create = (req, res) => {
     const task = new Task({
         title: req.body.title,
         description: req.body.description,
-        completed: req.body.completed || false
+        completed: req.body.completed || false,
+        dueDate: req.body.dueDate
     });
 
     // Save Task in the database

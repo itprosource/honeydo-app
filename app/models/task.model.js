@@ -5,6 +5,7 @@ const Task = function(task) {
     this.title = task.title;
     this.description = task.description;
     this.completed = task.completed;
+    this.startDate = task.startDate;
 };
 
 Task.create = (newTask, result) => {
@@ -73,7 +74,7 @@ Task.getAllCompleted = result => {
 
 Task.updateById = (id, task, result) => {
     sql.query(
-        "UPDATE tasks SET title = ?, description = ?, completed = ? WHERE id = ?",
+        "UPDATE tasks SET title = ?, description = ?, completed = ? , WHERE id = ?",
         [task.title, task.description, task.completed, id],
         (err, res) => {
             if (err) {
