@@ -74,8 +74,8 @@ Task.getAllCompleted = result => {
 
 Task.updateById = (id, task, result) => {
     sql.query(
-        "UPDATE tasks SET title = ?, description = ?, completed = ? , WHERE id = ?",
-        [task.title, task.description, task.completed, id],
+        "UPDATE tasks SET title = ?, description = ?, completed = ?, startDate = ? WHERE id = ?",
+        [task.title, task.description, task.completed, task.startDate, id],
         (err, res) => {
             if (err) {
                 console.log("error: ", err);
